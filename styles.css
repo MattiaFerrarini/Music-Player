@@ -1,0 +1,71 @@
+.volume-slider {
+    width: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease, width 0.5s ease;
+}
+
+.volume-control-container:hover .volume-slider {
+    width: 100%;
+    /* Adjust based on the desired width when visible */
+    opacity: 1;
+}
+
+.text-justify {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.album-icon {
+    width: 100%;
+    margin-bottom: 1em;
+    border-radius: 10px;
+}
+
+.album-col {
+    text-align: center;
+    padding: 2em;
+}
+
+.album-col button {
+    all: unset;
+}
+
+.album-col button:hover {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#albumTitle {
+    margin-bottom: 1em;
+}
+
+.song-col {
+    padding: 2em;
+}
+
+.song-col header {
+    padding-bottom: 1em;
+}
+
+.card {
+    border: 1px solid rgb(215, 215, 215);
+    box-shadow: 0px 0px 4px rgb(201, 201, 201);
+}
+
+.progress {
+    background: transparent;
+}
+
+#songTitle {
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+}
+
+i {
+    font-size: 1.25em;
+}
+
+#songImage {
+    padding: 1em;
+    width: 100%;
+}
