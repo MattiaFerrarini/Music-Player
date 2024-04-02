@@ -9,6 +9,7 @@
             integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
         <link rel="stylesheet" href="styles.css">
+        <script src="script.js"></script>
     </head>
 
     <body>
@@ -17,43 +18,33 @@
                 <div class="row justify-content-center gx-5">
                     <div class="col-lg-3 col-md-3 album-col">
                         <img src="Assets/pexels-dids-1616470.jpg" alt="img" class="album-icon">
-                        <h3 id="albumTitle">Nu Genea Deluxe</h3>
-                        <ul class="list-group list-group-flush d-none d-md-block">
-                            <li class="list-group-item"> <button> An item </button></li>
-                            <li class="list-group-item"> <button> An item </button></li>
-                            <li class="list-group-item"> <button> An item </button></li>
-                            <li class="list-group-item"> <button> An item </button></li>
-                        </ul>
+                        <h3 class="display-6" id="albumTitle">A Great Playlist</h3>
+                        <ul class="list-group list-group-flush d-none d-md-block" id="songList"></ul>
                     </div>
                     <div class="col-xl-6 col-lg-8 col-md-9 song-col">
                         <header>
-                            <h1 class="display-5">Song title</h1>
+                            <h1 class="display-5" id="songTitle">Song title</h1>
+                            <h2 class="display-6" id="songAuthor"> Author</h2>
                         </header>
-
-                        <p>
-                            Nu Genea's Bar Mediterraneo is an idea of a shared place where people meet and fuse together;
-                            a space that leaves its doors open to travellers and their lives, always exposed to the whims of
-                            fate. Some of this can be experienced through the multitude of sounds that come together in the tracks,
-                            layers of different acoustic instruments, voices and synthesizers merging in a unique musical
-                            blend.
-                        </p>
+                        
+                        <p id="songDescription"> </p>
 
                         <div class="card mt-4" style="max-width: 600px;">
                             <div class="row g-0">
                                 <div class="col-md-4 d-flex align-items-center justify-content-center" id="songImageContainer">
-                                    <img src="Assets/pexels-dids-1616470.jpg" alt="Song image" id="songImage">
+                                    <img src="Assets/Covers/cover0.jpg" alt="Song image" id="songCover">
                                 </div>
                                 <div class="col-md-8">
                                     <div class="card-body text-center">
-                                        <h4 id="songTitle">Nu Genea - Bar Mediterraneo</h4>
+                                        <h4 id="songTitleCard">Nu Genea - Bar Mediterraneo</h4>
                                         <div class="d-flex justify-content-center">
-                                            <button id="previousButton" class="btn btn-lg">
+                                            <button id="previousButton" class="btn btn-lg" onclick="previousSong()">
                                                 <i id="previousIcon" class="bi bi-caret-left-fill"></i>
                                             </button>
                                             <button id="playButton" class="btn btn-lg">
                                                 <i id="playPauseIcon" class="bi bi-play-circle-fill"></i>
                                             </button>
-                                            <button id="nextButton" class="btn btn-lg">
+                                            <button id="nextButton" class="btn btn-lg" onclick="nextSong()">
                                                 <i id="nextIcon" class="bi bi-caret-right-fill"></i>
                                             </button>
                                         </div>

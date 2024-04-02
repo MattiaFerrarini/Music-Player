@@ -35,8 +35,13 @@
     cursor: pointer;
 }
 
+.album-col li {
+    background: transparent;
+}
+
 #albumTitle {
     margin-bottom: 1em;
+    font-size: xx-large;
 }
 
 .song-col {
@@ -48,24 +53,34 @@
 }
 
 .card {
-    border: 1px solid rgb(215, 215, 215);
-    box-shadow: 0px 0px 4px rgb(201, 201, 201);
+    border: 2px solid rgb(215, 215, 215);
+    box-shadow: 2px 2px 4px rgb(128, 128, 128);
+    background: transparent;
 }
 
 .progress {
     background: transparent;
 }
 
-#songTitle {
+#songTitleCard {
     margin-top: 0.5em;
-    margin-bottom: 1em;
+    margin-bottom: 0.5em;
 }
 
 i {
     font-size: 1.25em;
 }
 
-#songImage {
+#songCover {
+    border-radius: 10px;
     padding: 1em;
-    width: 100%;
+    max-width: 100%;
+}
+
+body {
+    transition: background-color 1s ease;
+}
+
+#songAuthor {
+    font-size:large;
 }
