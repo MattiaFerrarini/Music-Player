@@ -1,5 +1,5 @@
 # Music Player
-A music player website based on Bootstrap cards. Developed as an exercise for the Web Technologies course at University of Bologna.
+A music player website based on Bootstrap. Developed as an exercise for the Web Technologies course at University of Bologna.
 
 <img width="959" alt="image" src="https://github.com/MattiaFerrarini/Music-Player/assets/119322415/04ebc67c-aca5-4ce6-ab86-ef4a8fe442ee">
 
