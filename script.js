@@ -1,11 +1,4 @@
-let currentSongIndex;
-const songButtonPrefix = "songButton"
-const coverPrefix = "Assets/Covers/cover"
-let isPlaying;
-
-let musicPlayer, progressSlider, currentTimeDisplay, totalDurationDisplay;
-
-// all the following data should be in a database
+// data about the songs (it should all be in a database)
 const titles = ["On & On", "Heroes Tonight", "Invincible", "My Heart"]
 const authors = ["Cartoon, Jéja, Daniel Levi", "Janji, Johnning", "DEAF KEV", "Different Heaven & EH!DE"]
 const bgColors = ["#FFF", "#e6c993", "#AFE0FF", "#C7A0C7"];
@@ -20,6 +13,13 @@ const songFiles = ["Assets/Songs/Cartoon, Jéja - On & On (feat. Daniel Levi) [N
     "Assets/Songs/DEAF KEV - Invincible [NCS Release].mp3", 
     "Assets/Songs/Different Heaven & EH!DE - My Heart [NCS Release].mp3"]
 
+
+let isPlaying; // whether a song is being played or not
+let currentSongIndex; // the index of the current song
+// frequently used objects
+let musicPlayer, progressSlider, currentTimeDisplay, totalDurationDisplay;
+
+// when the window is loaded, get the objects and initialize the page content
 window.onload = function(){
     musicPlayer = document.getElementById("musicPlayer");
     progressSlider = document.getElementById("progressSlider");
@@ -29,15 +29,20 @@ window.onload = function(){
     initialize();
 }
 
+// function to initialize page content
 function initialize(){
+    // create the list of songs in the side panel
     initializesongList();
 
+    // set the visualized song to the first one
     currentSongIndex = 0;
     changeSong(currentSongIndex);
 
+    // song not playing by default
     isPlaying = false;
 }
 
+// function to initialize the list of songs in the side panel
 function initializesongList(){
     let songList = document.getElementById("songList");
 
@@ -59,7 +64,11 @@ function initializesongList(){
     }
 }
 
+// function to change the current song to the specified one
 function changeSong(songIndex){
+    const songButtonPrefix = "songButton"
+    const coverPrefix = "Assets/Covers/cover"
+
     // change bolded item in side bar
     document.getElementById(songButtonPrefix + currentSongIndex).style.fontWeight = "normal";
     document.getElementById(songButtonPrefix + songIndex).style.fontWeight = "bold";
@@ -86,19 +95,13 @@ function changeSong(songIndex){
     currentSongIndex = songIndex;
 }
 
+// function to change song when selected through the sidebar
 function changeSection(sectionIndex){
     changeSong(sectionIndex);
-    pause();
+    pause(); // do not play music
 }
 
-function nextSong(){
-    nextPrevSong(1);
-}
-
-function previousSong(){
-    nextPrevSong(-1);
-}
-
+// change to a song whose index is offset positions ahead
 function nextPrevSong(offset){
     // change song
     newSongIndex = (currentSongIndex + offset + titles.length) % titles.length;
@@ -109,6 +112,16 @@ function nextPrevSong(offset){
         playSong();
 }
 
+// go to next song
+function nextSong(){
+    nextPrevSong(1);
+}
+
+// got to previous song
+function previousSong(){
+    nextPrevSong(-1);
+}
+
 // Play/Pause toggle function
 function togglePlayPause() {
     if(isPlaying)
@@ -117,6 +130,7 @@ function togglePlayPause() {
         playSong();
 }
 
+// pause the music
 function pauseSong(){
     playPauseIcon = document.getElementById('playPauseIcon');
     musicPlayer.pause();
@@ -125,6 +139,7 @@ function pauseSong(){
     isPlaying = false;
 }
 
+// play the music
 function playSong(){
     playPauseIcon = document.getElementById('playPauseIcon');
     musicPlayer.play();
@@ -133,31 +148,38 @@ function playSong(){
     isPlaying = true;
 }
 
+// function called when a song ends: play next one
 function onSongEnd(){
     nextSong();
 }
 
+// when the data about the song is loaded, set the timers and slider
 function onSongLoaded(){
     totalDurationDisplay.textContent = formatTime(musicPlayer.duration);
     progressSlider.value = 0;
     currentTimeDisplay.textContent = formatTime(0);
 }
 
+// function called when music progresses: display the progress
 function onTimeUpdate(){
     const percentage = (musicPlayer.currentTime / musicPlayer.duration) * 100;
     progressSlider.value = percentage;
     currentTimeDisplay.textContent = formatTime(musicPlayer.currentTime);
 }
 
+// function called when the user interacts with progress bar: 
+// set the song progress to the one specified by the user
 function onSliderInput(){
     const seekTime = (musicPlayer.duration / 100) * progressSlider.value;
     musicPlayer.currentTime = seekTime;
 }
 
+// function called when the user inputs a volumne: set the music volume to it
 function onVolumeInput(){
     musicPlayer.volume = document.getElementById('volumeControl').value;
 }
 
+// function to format a time for display
 function formatTime(seconds) {
     let minutes = Math.floor(seconds / 60);
     seconds = Math.floor(seconds % 60);
