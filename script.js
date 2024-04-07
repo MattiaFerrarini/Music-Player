@@ -98,7 +98,7 @@ function changeSong(songIndex){
 // function to change song when selected through the sidebar
 function changeSection(sectionIndex){
     changeSong(sectionIndex);
-    pause(); // do not play music
+    pauseSong(); // do not play music
 }
 
 // change to a song whose index is offset positions ahead
